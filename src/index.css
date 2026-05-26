@@ -82,7 +82,7 @@
     outline-color: var(--ring);
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
   }
   html {
     @apply font-sans;

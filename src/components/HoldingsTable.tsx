@@ -59,7 +59,7 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
         <Table>
         <TableHeader className="bg-[#F4F5F6] dark:bg-[#1B1E27] border-b-0 transition-colors duration-300">
           <TableRow className="border-b-0 hover:bg-transparent">
-            <TableHead className="w-[50px] text-center pl-6 py-4">
+            <TableHead className="w-[40px] md:w-[50px] text-center pl-4 md:pl-6 py-4">
               <Checkbox
                 checked={allSelected}
                 onCheckedChange={(checked) => onSelectAll(checked as boolean)}
@@ -68,15 +68,15 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
               />
             </TableHead>
             <TableHead className="text-slate-900 dark:text-slate-300 font-semibold py-4">Asset</TableHead>
-            <TableHead className="text-slate-900 dark:text-slate-300 font-semibold py-4 text-right">
+            <TableHead className="text-slate-900 dark:text-slate-300 font-semibold py-4 pr-4 md:pr-0 text-right">
               <div className="flex flex-col items-end">
                 <span>Holdings</span>
                 <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400">Avg Buy Price</span>
               </div>
             </TableHead>
-            <TableHead className="text-slate-900 dark:text-slate-300 font-semibold py-4 text-right">Current Price</TableHead>
+            <TableHead className="text-slate-900 dark:text-slate-300 font-semibold py-4 text-right hidden md:table-cell">Current Price</TableHead>
             <TableHead 
-              className="text-slate-900 dark:text-slate-300 font-semibold py-4 text-right cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              className="text-slate-900 dark:text-slate-300 font-semibold py-4 text-right cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors hidden md:table-cell"
               onClick={() => handleSort('stcg')}
             >
               <div className="flex items-center justify-end gap-1">
@@ -87,7 +87,7 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
               </div>
             </TableHead>
             <TableHead 
-              className="text-slate-900 dark:text-slate-300 font-semibold py-4 text-right cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              className="text-slate-900 dark:text-slate-300 font-semibold py-4 text-right cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors hidden md:table-cell"
               onClick={() => handleSort('ltcg')}
             >
               <div className="flex items-center justify-end gap-1">
@@ -97,7 +97,7 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
                 )}
               </div>
             </TableHead>
-            <TableHead className="text-slate-900 dark:text-slate-300 font-semibold py-4 pr-6 text-right">Amount to Sell</TableHead>
+            <TableHead className="text-slate-900 dark:text-slate-300 font-semibold py-4 pr-6 text-right hidden md:table-cell">Amount to Sell</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -109,7 +109,7 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
                 key={holding.coin}
                 className={`border-b border-slate-100 dark:border-slate-800 transition-colors duration-300 ${isSelected ? "bg-[#F2F6FF] dark:bg-[#1A2542] hover:bg-[#F2F6FF] dark:hover:bg-[#1A2542]" : "bg-white dark:bg-[#131722] hover:bg-slate-50 dark:hover:bg-slate-800/50"}`}
               >
-                <TableCell className="text-center pl-6 py-4">
+                <TableCell className="text-center pl-4 md:pl-6 py-4">
                   <Checkbox
                     checked={isSelected}
                     onCheckedChange={(checked) => onSelectCoin(holding.coin, checked as boolean)}
@@ -126,7 +126,7 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
                     </div>
                   </div>
                 </TableCell>
-                <TableCell className="py-4 text-right">
+                <TableCell className="py-4 pr-4 md:pr-0 text-right">
                   <div className="flex flex-col items-end">
                     <span className="text-[15px] font-medium text-slate-900 dark:text-slate-200">
                       {holding.totalHolding.toLocaleString("en-US", { maximumFractionDigits: 5 })} {holding.coin}
@@ -136,12 +136,12 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
                     </span>
                   </div>
                 </TableCell>
-                <TableCell className="py-4 text-right">
+                <TableCell className="py-4 text-right hidden md:table-cell">
                   <span className="text-[15px] font-medium text-slate-900 dark:text-slate-200">
                     $ {holding.currentPrice.toLocaleString("en-US", { maximumFractionDigits: 4 })}
                   </span>
                 </TableCell>
-                <TableCell className="py-4 text-right">
+                <TableCell className="py-4 text-right hidden md:table-cell">
                   <div className="flex flex-col items-end">
                     <span className={`text-[15px] font-medium ${holding.stcg.gain >= 0 ? "text-[#00B152]" : "text-[#FF3F3F]"}`}>
                       {formatCurrency(holding.stcg.gain, holding.stcg.gain < 0)}
@@ -151,7 +151,7 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
                     </span>
                   </div>
                 </TableCell>
-                <TableCell className="py-4 text-right">
+                <TableCell className="py-4 text-right hidden md:table-cell">
                   <div className="flex flex-col items-end">
                     <span className={`text-[15px] font-medium ${holding.ltcg.gain >= 0 ? "text-[#00B152]" : "text-[#FF3F3F]"}`}>
                       {formatCurrency(holding.ltcg.gain, holding.ltcg.gain < 0)}
@@ -161,7 +161,7 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
                     </span>
                   </div>
                 </TableCell>
-                <TableCell className="py-4 pr-6 text-right">
+                <TableCell className="py-4 pr-6 text-right hidden md:table-cell">
                   <div className="text-[15px] font-medium text-slate-900 dark:text-slate-200">
                     {isSelected ? `${holding.totalHolding.toLocaleString("en-US", { maximumFractionDigits: 4 })} ${holding.coin}` : "-"}
                   </div>

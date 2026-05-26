@@ -60,18 +60,18 @@ const HarvestingCard: React.FC<HarvestingCardProps> = ({ title, data, variant, p
         </div>
 
         {/* Realised Capital Gains */}
-        <div className="pt-2 pb-1 flex items-center gap-4">
-          <div className="text-base font-semibold opacity-80">
+        <div className="pt-2 pb-1 flex flex-wrap items-center justify-between gap-2 md:gap-4">
+          <div className="text-[15px] md:text-base font-semibold opacity-80">
             {isPost ? "Effective Capital Gains:" : "Realised Capital Gains:"}
           </div>
-          <div className="text-3xl font-bold">
+          <div className="text-2xl md:text-3xl font-bold">
             {formatCurrency(realisedGains, realisedGains < 0)}
           </div>
         </div>
 
         {/* Fixed-height banner — plain text, no box, no layout shift */}
         {isPost && (
-          <div className="h-[32px] mt-1 flex items-center">
+          <div className="min-h-[32px] mt-1 flex items-center">
             {(hasSavings || hasLoss) && (
               <p className="text-[14px] font-medium">
                 {hasSavings ? "🎉" : "📉"}{" "}

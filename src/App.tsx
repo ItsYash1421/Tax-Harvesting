@@ -108,10 +108,10 @@ function App() {
   const totalSavings = preRealisedGains - postRealisedGains;
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] dark:bg-[#0B0E14] text-slate-900 dark:text-slate-100 pb-20 transition-colors duration-300">
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#F8F9FA] dark:bg-[#0B0E14] text-slate-900 dark:text-slate-100 pb-20 transition-colors duration-300">
       {/* Header */}
       <header className="bg-white dark:bg-[#131722] border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 h-[72px] flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img src={logoUrl} alt="KoinX Logo" className="h-[70px] object-contain" />
           </div>
@@ -127,17 +127,17 @@ function App() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 pt-10 space-y-6">
+      <main className="max-w-7xl mx-auto px-4 md:px-6 pt-6 md:pt-10 space-y-4 md:space-y-6">
         
-        <div className="flex items-baseline gap-4 relative z-20">
+        <div className="flex items-baseline justify-between md:justify-start gap-4 relative z-20">
           <h1 className="text-[28px] font-bold text-slate-900 dark:text-white">Tax Harvesting</h1>
           <div className="relative group flex items-center h-full">
             <a href="#" className="text-blue-600 hover:underline text-sm font-medium">How it works?</a>
             
             {/* Tooltip (Dark in light mode, White in dark mode) */}
-            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-[#0F1629] dark:bg-white shadow-2xl rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+            <div className="absolute top-full right-0 md:left-0 md:right-auto mt-3 w-[280px] md:w-[360px] bg-[#0F1629] dark:bg-white shadow-2xl rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
               {/* Tooltip Arrow */}
-              <div className="absolute -top-[6px] left-1/2 -translate-x-1/2 w-4 h-4 bg-[#0F1629] dark:bg-white rotate-45 rounded-sm transition-colors duration-300"></div>
+              <div className="absolute -top-[6px] right-6 md:left-6 md:right-auto w-4 h-4 bg-[#0F1629] dark:bg-white rotate-45 rounded-sm transition-colors duration-300"></div>
               
               <div className="relative z-10 text-[13px] leading-[1.6] text-slate-200 dark:text-slate-800 transition-colors duration-300">
                 Lorem ipsum dolor sit amet consectetur. Euismod id posuere nibh semper mattis scelerisque tellus. Vel mattis diam duis morbi tellus dui consectetur. <a href="#" className="text-[#3E74FF] dark:text-blue-600 underline underline-offset-2 hover:text-blue-300 dark:hover:text-blue-700 transition-colors">Know More</a>
@@ -149,7 +149,7 @@ function App() {
         {/* Disclaimer Accordion */}
         <div className="bg-[#EBF2FF] dark:bg-[#1A2542] rounded-xl border border-blue-100 dark:border-blue-900/30 transition-colors duration-300">
           <button 
-            className="w-full px-6 py-4 flex items-center justify-between text-left"
+            className="w-full px-4 md:px-6 py-4 flex items-center justify-between text-left"
             onClick={() => setDisclaimerOpen(!disclaimerOpen)}
           >
             <div className="flex items-center gap-2 text-slate-900 dark:text-slate-200 font-semibold">
@@ -163,7 +163,7 @@ function App() {
           
           <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${disclaimerOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
             <div className="overflow-hidden">
-              <div className="px-6 pb-4 pt-0 text-[15px] text-slate-800 dark:text-slate-300">
+              <div className="px-4 md:px-6 pb-4 pt-0 text-[14px] md:text-[15px] text-slate-800 dark:text-slate-300">
                 <ul className="list-disc pl-5 space-y-2">
                   <li>Tax-loss harvesting is currently not allowed under Indian tax regulations. Please consult your tax advisor before making any decisions.</li>
                   <li>Tax harvesting does not apply to derivatives or futures. These are handled separately as business income under tax rules.</li>
