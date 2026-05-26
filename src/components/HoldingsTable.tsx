@@ -59,7 +59,7 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
         <Table>
         <TableHeader className="bg-[#F4F5F6] dark:bg-[#1B1E27] border-b-0 transition-colors duration-300">
           <TableRow className="border-b-0 hover:bg-transparent">
-            <TableHead className="w-[40px] md:w-[50px] text-center pl-4 md:pl-6 py-4">
+            <TableHead className="w-[32px] sm:w-[50px] text-center pl-2 sm:pl-6 py-4">
               <Checkbox
                 checked={allSelected}
                 onCheckedChange={(checked) => onSelectAll(checked as boolean)}
@@ -68,7 +68,7 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
               />
             </TableHead>
             <TableHead className="text-slate-900 dark:text-slate-300 font-semibold py-4">Asset</TableHead>
-            <TableHead className="text-slate-900 dark:text-slate-300 font-semibold py-4 pr-4 md:pr-0 text-right">
+            <TableHead className="text-slate-900 dark:text-slate-300 font-semibold py-4 pr-3 sm:pr-6 text-right">
               <div className="flex flex-col items-end">
                 <span>Holdings</span>
                 <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400">Avg Buy Price</span>
@@ -109,7 +109,7 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
                 key={holding.coin}
                 className={`border-b border-slate-100 dark:border-slate-800 transition-colors duration-300 ${isSelected ? "bg-[#F2F6FF] dark:bg-[#1A2542] hover:bg-[#F2F6FF] dark:hover:bg-[#1A2542]" : "bg-white dark:bg-[#131722] hover:bg-slate-50 dark:hover:bg-slate-800/50"}`}
               >
-                <TableCell className="text-center pl-4 md:pl-6 py-4">
+                <TableCell className="text-center pl-2 sm:pl-6 py-4">
                   <Checkbox
                     checked={isSelected}
                     onCheckedChange={(checked) => onSelectCoin(holding.coin, checked as boolean)}
@@ -117,21 +117,21 @@ const HoldingsTable: React.FC<HoldingsTableProps> = ({
                     className="border-slate-300 dark:border-slate-600 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600"
                   />
                 </TableCell>
-                <TableCell className="py-4">
-                  <div className="flex items-center gap-3">
-                    <img src={holding.logo} alt={holding.coinName} className="w-8 h-8 rounded-full" />
-                    <div className="text-left">
-                      <div className="text-[15px] font-medium text-slate-900 dark:text-slate-200">{holding.coinName}</div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{holding.coin}</div>
+                <TableCell className="py-4 max-w-[130px] sm:max-w-none">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <img src={holding.logo} alt={holding.coinName} className="w-7 h-7 sm:w-8 sm:h-8 rounded-full shrink-0" />
+                    <div className="text-left min-w-0">
+                      <div className="text-[14px] sm:text-[15px] font-medium text-slate-900 dark:text-slate-200 truncate">{holding.coinName}</div>
+                      <div className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">{holding.coin}</div>
                     </div>
                   </div>
                 </TableCell>
-                <TableCell className="py-4 pr-4 md:pr-0 text-right">
+                <TableCell className="py-4 pr-3 sm:pr-6 text-right whitespace-normal">
                   <div className="flex flex-col items-end">
-                    <span className="text-[15px] font-medium text-slate-900 dark:text-slate-200">
+                    <span className="text-[13px] sm:text-[15px] font-medium text-slate-900 dark:text-slate-200">
                       {holding.totalHolding.toLocaleString("en-US", { maximumFractionDigits: 5 })} {holding.coin}
                     </span>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                    <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                       $ {holding.averageBuyPrice.toLocaleString("en-US", { maximumFractionDigits: 2 })}
                     </span>
                   </div>
